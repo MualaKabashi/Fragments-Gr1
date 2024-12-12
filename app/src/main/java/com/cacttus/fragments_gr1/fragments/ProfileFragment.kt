@@ -21,13 +21,14 @@ class ProfileFragment : Fragment() {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
+        var profileDetailsFragment = ProfileDetailsFragment()
         binding.btnSend.setOnClickListener {
             var value = binding.etText.text.toString()
             var bundle = Bundle()
-            bundle.putString("data", value)
-
+            bundle.putString("data", `value`)
+            profileDetailsFragment.arguments = bundle
+            setCurrentFragment(profileDetailsFragment)
         }
-
     }
 
     private fun setCurrentFragment(fragment: Fragment) {

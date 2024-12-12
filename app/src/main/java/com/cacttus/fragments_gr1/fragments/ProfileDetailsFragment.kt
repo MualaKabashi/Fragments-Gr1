@@ -5,13 +5,23 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import androidx.fragment.app.Fragment
+import com.cacttus.fragments_gr1.databinding.FragmentProfileDetailsBinding
 
 class ProfileDetailsFragment : Fragment() {
+    private lateinit var binding: FragmentProfileDetailsBinding
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        return super.onCreateView(inflater, container, savedInstanceState)
+        binding = FragmentProfileDetailsBinding.inflate(layoutInflater)
+        return binding.root
+    }
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+        var data = this.arguments?.getString("data", null)
+        binding.detailsText.text = data.toString()
     }
 }
